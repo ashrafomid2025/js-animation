@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confetti Animation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=League+Spartan:wght@100..900&display=swap');
+        body {
+            margin: 0;
+            font-family: Kanit;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .confetti {
+            position: absolute;
+            width: 15px;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 61% 55%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            height: 15px;
+            background-color: randomColor();
+            opacity: 0.8;
+            border-radius: 50%;
+        }
+        .twirl-text {
+            font-size: 3rem;
+            font-weight: bold;
+            display: flex;
+            height: 100vh;
+        
+        }
+
+        .twirl-text span {
+            display: inline-block;
+            animation: twirl 1.5s infinite ease-in-out;
+        }
+
+        @keyframes twirl {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Add delays to each letter */
+        .twirl-text span:nth-child(1) { animation-delay: 0s; }
+        .twirl-text span:nth-child(2) { animation-delay: 0.1s; }
+        .twirl-text span:nth-child(3) { animation-delay: 0.2s; }
+        .twirl-text span:nth-child(4) { animation-delay: 0.3s; }
+        .twirl-text span:nth-child(5) { animation-delay: 0.4s; }
+        .twirl-text span:nth-child(6) { animation-delay: 0.5s; }
+        .twirl-text span:nth-child(7) { animation-delay: 0.6s; }
+        .twirl-text span:nth-child(8) { animation-delay: 0.5s; }
+        
+    </style>
+</head>
+<body>
+    <div class="twirl-text">
+        <div><p style="color: green;">Congratulations</p>on finishing </div>
+        <span>H</span><span>T</span><span>M</span><span>L</span><span>&</span><span>C</span><span>S</span><span>S</span>
+        
+    </div>
+    <script>
+        function randomColor() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffcc00', '#ff66ff', '#66ccff'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function createConfettiPiece() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            document.body.appendChild(confetti);
+            
+            confetti.style.left = Math.random() * window.innerWidth + 'px';
+            confetti.style.top = -10 + 'px';
+            confetti.style.backgroundColor = randomColor();
+            
+            let velocity = Math.random() * 3 + 2;
+            let rotation = Math.random() * 360;
+
+            function animate() {
+                let top = parseFloat(confetti.style.top);
+                if (top < window.innerHeight) {
+                    confetti.style.top = top + velocity + 'px';
+                    confetti.style.transform = `rotate(${rotation}deg)`;
+                    requestAnimationFrame(animate);
+                } else {
+                    confetti.remove();
+                }
+            }
+            animate();
+        }
+        
+        function startConfetti() {
+            setInterval(createConfettiPiece, 100);
+        }
+        
+        startConfetti();
+    </script>
+</body>
+</html>
