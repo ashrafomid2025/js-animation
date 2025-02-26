@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confetti Animation</title>
     <style>
@@ -10,6 +11,11 @@
             margin: 0;
             font-family: Kanit;
             overflow: hidden;
+            display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0;
             background-color: #f0f0f0;
         }
         .confetti {
@@ -24,8 +30,8 @@
         .twirl-text {
             font-size: 3rem;
             font-weight: bold;
-            display: flex;
-            height: 100vh;
+           
+            
         
         }
 
@@ -36,7 +42,7 @@
 
         @keyframes twirl {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-50px); }
         }
 
         /* Add delays to each letter */
@@ -53,11 +59,13 @@
 </head>
 <body>
     <div class="twirl-text">
-        <div>
-            <div>
-            <p style="color: rgb(22, 73, 22);">Congratulations</p>on finishing </div>
+        
+            <h3 style="color: rgb(37, 209, 37); margin: 2px">Congratulations</h3>
+            <h4 style="text-align: center; margin: 0;">on finishing</h4> 
+            <div style="text-align: center; margin: 0">
         <span>H</span><span>T</span><span>M</span><span>L</span><span>&</span><span>C</span><span>S</span><span>S</span>
         </div>
+        
     </div>
     <script>
         function randomColor() {
