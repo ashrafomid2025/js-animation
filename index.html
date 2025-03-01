@@ -20,11 +20,11 @@
         }
         .confetti {
             position: absolute;
-            width: 15px;
+            width: 16px;
             clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 61% 55%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-            height: 15px;
+            height: 16px;
             background-color: randomColor();
-            opacity: 0.8;
+            opacity: 1;
             border-radius: 50%;
         }
         .twirl-text {
@@ -42,7 +42,7 @@
 
         @keyframes twirl {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-50px); }
+            50% { transform: translateY(-27px); }
         }
 
         /* Add delays to each letter */
@@ -82,7 +82,7 @@
             confetti.style.top = -10 + 'px';
             confetti.style.backgroundColor = randomColor();
             
-            let velocity = Math.random() * 3 + 2;
+            let velocity = Math.random() * 5 + 2;
             let rotation = Math.random() * 360;
 
             function animate() {
